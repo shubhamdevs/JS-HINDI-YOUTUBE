@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // it works same as setTimeout but it also takes a parameter
+    // const sayDate = function(str){
+    //     console.log(str, Date.now())
+    // }
+
+    
+    // const intervalId = setInterval(sayDate, 1000, "hi") // now it will print hi in 1 sec time interval
+
+    // // it works same as clearTimeout
+    // clearInterval(intervalId)
+
+    // Exercise
+    
+    let intervalId
+
+    document.getElementById("start").addEventListener("click", function(){
+        intervalId = setInterval(function(str){
+            console.log(str, Date.now())
+        }, 1000, "shubham")
+    })
+
+    document.getElementById("stop").addEventListener("click", function(){
+        clearInterval(intervalId)
+    })
+
+    // here we have to declar the intervalId id variable outside of fucntion scope and make it a global scope that we can use it later.
+
+    
+</script>
+</html>
