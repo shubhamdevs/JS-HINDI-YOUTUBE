@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Chai aur code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout is a method but it also calls an api. It's available on browser.
+    // clearInterval and clearTimeout is also part of it, we should have to know about it
+
+    // setTimeout takes a handler, handler is same as function or method, but mostly it doesn't have any name
+    // it also takes a timeout in number
+    // setTimeout(function() {
+    //     console.log("Shubham")
+    // }, 2000)
+
+    // same as setTimeout, setInterval takes a time and a handler and it executes the function again and again till time interval
+    const sayShubham = function(){
+        console.log("Shubham")
+    }
+    
+    const changeText = function(){
+        document.querySelector("h1").innerHTML = "best JS series"
+    }
+
+
+    // setTimeout(sayShubham, 2000) // here we are giving reference not the calling it because it's a handeler
+
+    const changeMe = setTimeout(changeText, 2000)
+
+    // clearTimeout needs a reference which action it should stop
+    // clearTimeout(changeMe) --> but here we need to give it a reference otherwise there is no use of using it with setTimeout
+
+    document.querySelector("#stop").addEventListener("click", function(){
+        clearTimeout(changeMe)
+        console.log("STOPPED")
+    })
+
+
+
+</script>
+</html>
