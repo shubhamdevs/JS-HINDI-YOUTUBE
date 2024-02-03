@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById("owl").onclick = function() {
+    //     alert("Owl Clicked")
+    // }
+    // attachEvent()
+    // jQuery - on
+
+    // document.getElementById("owl").addEventListener("click", function(e){
+        
+    // }, false)
+    // The Thired parameter is default value is false, that's why most of the people don't mention it
+    // And this is called event propogation
+
+    // We have to look for these topics in event:
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+
+    // document.getElementById("images").addEventListener("click", function(e){
+    //     console.log("clicked inside the ul")
+    // }, false)
+
+    // document.getElementById("owl").addEventListener("click", function(e) {
+    //     console.log("owl clicked")
+    //     e.stopPropagation()
+    // }, false)
+
+    // here two eventlistener is in same context, first one the all image and 2nd one is the particular image.
+    // if we maintain it false then it would be a bublle event, where the 2nd one will show first and then the 1st on
+    // but if it true then it would be a top-down event, where the 1st event will show first and then the 2nd event
+    // if we add e.stopPropagation() then the event will not propragate to top buble event
+
+    // document.getElementById("google").addEventListener("click", function(e){
+    //     e.preventDefault()
+    //     // this preventDefault method will prevent it's course of action
+    //     e.stopPropagation()
+    //     console.log("google clicked  ")
+    // }, false)
+    
+
+    document.querySelector("#images").addEventListener("click", function(e){
+        console.log(e.target.parentNode)
+        // parenNode will bring the parent element of the clicked item, here the li(list item)
+        // let removeIt = e.target.parentNode
+        // removeIt.remove() -->> it will remove the element
+        // removeIt.parentNode.removeChild(removeIt)
+        // here we are first taking the parent element of removeit(in this case ul), then we are applying removeChild method
+        // which remove the child removeIt
+
+        if (e.target.tagName === "IMG") {
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+
+        // here we are checking the e.target.tagName, tagName give us the clicked tag, so now we are checking if it's a image then do the job
+
+    }, false)
+
+    
+
+</script>
+</html>
